@@ -2,10 +2,9 @@
 #include <pthread.h>
 #include <stdio.h>
 
-/*Listing 4.10 ( job-queue1.c) Thread Function to Process Jobs from the Queue*/
-/*Obs.1: La finalidad de este programa es el de simular un conjunto de hilos
-        realizando tareas de una cola  en diferentes hilos. Se busca simular
-        condiciones de carrera en hilos.*/
+/*Listing 4.11 ( job-queue2.c) Job Queue Thread Function, Protected by a Mutex*/
+/*Obs.1:    Este programa tiene la misma implementacion que el listing 4.10, pero 
+            se evitan las condiciones de carrera con el uso de un Mutex.*/
 /*Obs.2:    Se agrega el main de ejecucion y los trabajos a realizarse en la cola
             de trabajos.*/
 
@@ -13,13 +12,19 @@ long long global_integer = 0;
 int repeticiones = 999; //Cantidad de veces que cada job busca adicionar +1 a la variable global_integer.
 int nro_jobs = 100; //Nro de jobs a generar y encolar.
 
+/* A mutex protecting job_queue. */
+pthread_mutex_t job_queue_mutex = PTHREAD_MUTEX_INITIALIZER;
+
 /*Funcion que incrementa una variable global.*/
 void aumentar() {
+    pthread_mutex_lock (&job_queue_mutex);
     for (int i = 0; i < repeticiones; i++)
     {
         global_integer++;
     }
+    pthread_mutex_unlock (&job_queue_mutex);
 }
+
 
 struct job {
     /* Link field for linked list.*/
@@ -29,33 +34,55 @@ struct job {
     void (*aumentarUno)(struct job*);
 };
 
+/* A linked list of pending jobs.*/
+struct job* job_queue;
 
 void process_job(struct job* aux) 
 {
     aux->aumentarUno(aux);
 }
 
-/* A linked list of pending jobs.*/
-struct job* job_queue;
 
-/* Process queued jobs until the queue is empty.*/
 
+/* Process queued jobs until the queue is empty.
+Synchronization and Critical Sections
+*/
 void* thread_function (void* arg)
 {
-    while (job_queue != NULL) {
+    while (1) {
+        struct job* next_job;
+        
+        /* Lock the mutex on the job queue. */
+        pthread_mutex_lock (&job_queue_mutex);
+        
+        /* Now it’s safe to check if the queue is empty. */
+        if (job_queue == NULL) {
+            next_job = NULL;
+        } else {
 
-        /* Get the next available job. */
-        struct job* next_job = job_queue;
+            /* Get the next available job. */
+            next_job = job_queue;
+            
+            /* Remove this job from the list. */
+            job_queue = job_queue->next;
+        }
 
-        /* Remove this job from the list. */
-        job_queue = (job_queue)->next;
+        /* Unlock the mutex on the job queue because we’re done with the
+        queue for now. */
+        pthread_mutex_unlock (&job_queue_mutex);
+
+        /* Was the queue empty?*/
+        if (next_job == NULL) {
+            break;
+            /*If so, end the thread.*/
+        }
 
         /* Carry out the work. */
         process_job (next_job);
+
         /* Clean up. */
         free (next_job);
     }
-
     return NULL;
 }
 
@@ -82,33 +109,21 @@ int main(int argc, char const *argv[])
 
     pthread_t thread1;
     pthread_t thread2;
-    pthread_t thread3;
-    pthread_t thread4;
     long long cantidad_esperada = repeticiones*nro_jobs;
+    printf("--------------------------------------------------------------------------\n");
     printf("--------------------------------------------------------------------------\n");
     printf( "Los procesos a realizarse en la cola de trabajos es incrementar una \n"
             "variable %d (nro_jobs)* %d (repeticiones func. aumentar) veces = %lld.\n"
             "Si ocurrio una condicion de carrera, el resultado final sera un nro.\n"
             "diferente a %lld\n", nro_jobs, repeticiones, cantidad_esperada, cantidad_esperada);
     printf("--------------------------------------------------------------------------\n");
-    printf("--------------------------------------------------------------------------\n");
-    printf( "Un motivo que genera las condiciones de carrera en este programa es cuando un hilo\n" 
-            "accede a la funcion que adiciona con el valor X, y antes de que pueda guardar el\n"
-            "valor X+1, otro hilo modifica el valor en memoria a algun valor Y\n"
-            "(puede ser X+1, etc.). Luego, cuando el 1er hilo guarde X+1 en la memoria, el\n"
-            "valor anterior en memoria ya no era X, ocasionando que el conteo sea incorrecto.\n"
-            "Si esto ocurre, el resultado final no sera el esperado.\n");
-    printf("--------------------------------------------------------------------------\n");
-    printf( "La otra clase de condiciones de carrera que pueden ocurrir en este programa\n"
-            "ocurren cuando los hilos buscan acceder a la cola de trabajos, y terminen\n"
-            "accediendo al mismo trabajo.\n");
-    printf("--------------------------------------------------------------------------\n");
-    printf( "Obs.:  En algunas ejecuciones, el programa termina en medio de la ejecucion\n"
-            "por los problemas que se generan en las repetidas race conditions.\n"
-            "        Esto ocurre en cuando dos hilos acceden al mismo job casi al mismo\n"
-            "tiempo, y uno de ellos elimina el job, provocando que el ->next en el otro\n"
-            "hilo produzca un error de segmentacion.\n"
-            "Se recomienda que si eso ocurre, se vuelva a probar el programa nuevamente.\n");
+    printf( "Obs.: Las condiciones de carrera que ocurrian en el listing anterior\n"
+            "se evitan en este programa mediante el uso de Mutexs.\n"
+            "Tanto los problemas en el manejo de las colas y la asignacion de los\n"
+            "jobs a realizar por cada hilo, como en el for que aumentaba la variable\n"
+            "global_integer++, fueron solucionados con el uso de Mutexs en cada\n"
+            "seccion. Es por ello, que el valor esperado y el resultado final son\n"
+            "iguales al finalizar el programa.\n");
     printf("--------------------------------------------------------------------------\n");
     printf("--------------------------------------------------------------------------\n");
     /*Creamos y encolamos jobs (cantidad nro_jobs)*/
