@@ -24,7 +24,7 @@ void aumentar() {
 struct job {
     /* Link field for linked list.*/
     struct job* next;
-    int pos;
+
     /* Other fields describing work to be done... */
     void (*aumentarUno)(struct job*);
 };
@@ -60,11 +60,10 @@ void* thread_function (void* arg)
 }
 
 /*Agrega un nodo nuevo luego del nodo "nodo" recibido de parametro*/
-void add(struct job** nodo, void* funcion, int pos) {
+void add(struct job** nodo, void* funcion) {
     struct job* nuevo = (struct job*)malloc(sizeof(struct job));
     struct job* actual = *nodo;
     nuevo->aumentarUno = funcion;
-    nuevo->pos = pos;
     nuevo->next = NULL;
 
     if (*nodo == NULL) {
@@ -116,7 +115,7 @@ int main(int argc, char const *argv[])
     job_queue = NULL;
     for (int i = 0; i < nro_jobs; i++)
     {
-        add(&job_queue, aumentar, i+1);
+        add(&job_queue, aumentar);
     }
     
     pthread_create(&thread1, NULL, &thread_function, NULL);    
