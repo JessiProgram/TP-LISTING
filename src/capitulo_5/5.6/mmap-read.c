@@ -16,7 +16,8 @@ int main (int argc, char* const argv[])
 	file_memory = mmap (0, FILE_LENGTH, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
 	close (fd);
 	/* Read the integer, print it out, and double it.  */
-	scanf (file_memory, "%d", &integer);
+	sscanf (file_memory, "%d", &integer);
+	
 	printf ("value: %d\n", integer);
 	sprintf ((char*) file_memory, "%d\n", 2 * integer);
 	/* Release the memory (unnecessary because the program exits).  */
