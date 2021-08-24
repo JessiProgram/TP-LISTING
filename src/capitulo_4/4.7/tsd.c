@@ -5,6 +5,7 @@
 #include <time.h>
 #include <stdint.h>
 #include <math.h>
+#include <string.h>
 
 /*Listing 4.7 (tsd.c) Per-Thread Log Files Implemented with Thread-Specific Data*/
 
@@ -41,7 +42,20 @@ int find_square(int N)
     return i;
 }
 
+void getTime(char* text, char* textoRetorno) 
+{
+    time_t current_time;
+    struct tm * time_info;
+    char timeString[9];  // space for "HH:MM:SS\0"
 
+    time(&current_time);
+    time_info = localtime(&current_time);
+
+    strftime(timeString, sizeof(timeString), "%H:%M:%S", time_info);
+    strcpy(textoRetorno,text);
+    strcat(textoRetorno, "||");
+    strcat(textoRetorno, timeString);
+}
 
 void* thread_function (void* args)
 {
@@ -57,10 +71,14 @@ void* thread_function (void* args)
     /* Store the file pointer in thread-specific data under thread_log_key.*/
     pthread_setspecific (thread_log_key, thread_log);
     int N = *(int*) args;
-    write_to_thread_log ("Thread starting.");
-    write_to_thread_log ("Calculating...");
+    char textoRetorno[50];
+    getTime("Thread starting", textoRetorno);
+    write_to_thread_log (textoRetorno);
+    getTime("Calculating", textoRetorno);
+    write_to_thread_log (textoRetorno);
     long long square = (long long) find_square(N);
-    write_to_thread_log ("Calculations Finished...");
+    getTime("Calculations Finished", textoRetorno);
+    write_to_thread_log (textoRetorno);
     return (void*) square;
 }
 
