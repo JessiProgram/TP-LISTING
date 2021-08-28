@@ -34,8 +34,10 @@ listing-3.2:
 	mv system.o $(LISTING_A_RAIZ)/bin/capitulo_3
 
 listing-3.3: 
+	rm -rf bin/capitulo_3/fork.o &&\
 	mkdir -p bin/capitulo_3 && \
-	cd src/capitulo_3/3.3 && gcc $(CFLAGS) -o fork.o fork.c && \
+	cd src/capitulo_3/3.3 && \
+	gcc $(CFLAGS) -o fork.o fork.c && \
 	mv fork.o $(LISTING_A_RAIZ)/bin/capitulo_3
 
 listing-3.4: 
