@@ -20,8 +20,10 @@ listing-2.2:
 
 # Capitulo 3
 listing-3.1: 
+	rm -rf bin/capitulo_3/print-pid.o && \
 	mkdir -p bin/capitulo_3 && \
-	cd src/capitulo_3/3.1 && gcc $(CFLAGS) -o print-pid.o print-pid.c && \
+	cd src/capitulo_3/3.1 && \
+	gcc $(CFLAGS) -o print-pid.o print-pid.c && \
 	mv print-pid.o $(LISTING_A_RAIZ)/bin/capitulo_3
 
 listing-3.2: 
