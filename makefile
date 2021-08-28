@@ -34,13 +34,15 @@ listing-3.2:
 	mv system.o $(LISTING_A_RAIZ)/bin/capitulo_3
 
 listing-3.3: 
-	rm -rf bin/capitulo_3/fork.o &&\
+	rm -rf bin/capitulo_3/fork.o && \
 	mkdir -p bin/capitulo_3 && \
 	cd src/capitulo_3/3.3 && \
 	gcc $(CFLAGS) -o fork.o fork.c && \
 	mv fork.o $(LISTING_A_RAIZ)/bin/capitulo_3
 
 listing-3.4: 
+	rm -rf bin/capitulo_3/fork-exec.o && \
 	mkdir -p bin/capitulo_3 && \
-	cd src/capitulo_3/3.4 && gcc $(CFLAGS) -o fork-exec.o fork-exec.c && \
+	cd src/capitulo_3/3.4 && \
+	gcc $(CFLAGS) -o fork-exec.o fork-exec.c && \
 	mv fork-exec.o $(LISTING_A_RAIZ)/bin/capitulo_3
