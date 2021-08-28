@@ -27,8 +27,10 @@ listing-3.1:
 	mv print-pid.o $(LISTING_A_RAIZ)/bin/capitulo_3
 
 listing-3.2: 
+	rm -rf bin/capitulo_3/system.o && \
 	mkdir -p bin/capitulo_3 && \
-	cd src/capitulo_3/3.2 && gcc $(CFLAGS) -o system.o system.c && \
+	cd src/capitulo_3/3.2 && \
+	gcc $(CFLAGS) -o system.o system.c && \
 	mv system.o $(LISTING_A_RAIZ)/bin/capitulo_3
 
 listing-3.3: 
