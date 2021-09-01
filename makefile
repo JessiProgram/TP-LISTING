@@ -46,3 +46,10 @@ listing-3.4:
 	cd src/capitulo_3/3.4 && \
 	gcc $(CFLAGS) -o fork-exec.o fork-exec.c && \
 	mv fork-exec.o $(LISTING_A_RAIZ)/bin/capitulo_3
+
+listing-3.5:
+	rm -rf bin/capitulo_3/sigusr1.o && \
+	mkdir -p bin/capitulo_3 && \
+	cd src/capitulo_3/3.5 && \
+	gcc $(CFLAGS) -o sigusr1.o sigusr1.c && \
+	mv sigusr1.o $(LISTING_A_RAIZ)/bin/capitulo_3
