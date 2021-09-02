@@ -27,6 +27,8 @@ int main () {
     int M = 1;
     int N = 6;
     int intentos = 0;
+
+    printf("\nProceso id: %d\n", getpid());
     while (1) {
         printf("\n##############################\n");
 
@@ -47,7 +49,7 @@ int main () {
 
         // Verificar que difieran el valor de cada dado en 2
         if (diff <= 2) {
-            ret = kill(getpid(), SIGUSR1);
+            ret = kill(getpid(), SIGUSR1);  // kill -USR1 {{ getpid() }}
             printf("    Señal/es realizadas %d\n", sigusr1_count);
         }
 
