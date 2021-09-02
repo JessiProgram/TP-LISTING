@@ -4,76 +4,67 @@
 #include <string.h>
 #include <sys/types.h>
 #include <unistd.h>
+
+#include <time.h>
+#include <math.h>
+#define MAX_INTENTOS 10
+
 sig_atomic_t sigusr1_count = 0;
 
 void handler (int signal_number) {
     ++sigusr1_count;
 }
 
-#define MAX_CALSS_SIGUSR1 5
-
 int main () {
+    srand(time(NULL)); 
+
     struct sigaction sa;
     memset (&sa, 0, sizeof (sa)); 
     sa.sa_handler = &handler;
     sigaction (SIGUSR1, &sa, NULL);
 
-    pid_t child_pid = fork();
-    if (child_pid != 0) {
-        
-        int i = 0;
-        while (1) {
+    int ret;
+    int M = 1;
+    int N = 6;
+    int intentos = 0;
+    while (1) {
+        printf("\n##############################\n");
 
-            if (sigusr1_count == MAX_CALSS_SIGUSR1) {
-                kill(child_pid, SIGKILL);
-                break;
-            }
-            
-            // Realizando algun trabajo
-            sleep(1);
+        // Sumar un intento
+        ++intentos;
+
+        // Lanzar dados
+        int dado1 = rand() % (N-M+1) + M;
+        int dado2 = rand() % (N-M+1) + M;
+        printf("Intento %d\n", intentos);
+        printf("Dados lanzados\n");
+        printf("    Dado1: %d\n", dado1);
+        printf("    Dado2: %d\n", dado2);
+
+        // Obtener la diferencia de los valores de dado 1 y 2
+        int diff = (int) fabs((double) (dado1 - dado2));
+        printf("Difieren en %d\n", diff);
+
+        // Verificar que difieran el valor de cada dado en 2
+        if (diff <= 2) {
+            ret = kill(getpid(), SIGUSR1);
+            printf("    Señal/es realizadas %d\n", sigusr1_count);
         }
 
-    } else {
-
-        int llamadas = 0;
-
-        while (1) {
-            int option;
-            printf("\n--------------------------\n");
-            printf("Proceso padre: |%d| - Llamadas: |%d|\n", getppid(), llamadas);
-            printf("Proceso hijo: |%d|\n", getpid());
-
-            printf("\nOperaciones:\n");
-            printf("1. Llamar a señal de proceso padre %d\n", getppid());
-            printf("$ Elija una opción: ");
-
-            scanf("%d", &option);
-
-            int ret;
-            switch (option) {
-
-                case 1: // Llamar a handler
-                    ret = kill(getppid(), SIGUSR1);
-
-                    if (ret == -1) {
-                        break;
-                    }
-                    
-                    ++llamadas;
-                    if (llamadas == 5) {
-                        return 0;
-                    }
-                    
-                    break;
-                
-                default:
-                    printf("\n--------------------------\n");
-                    printf("Opcion invalida..\n\n");
-                    break;
-            }
-            
+        // Si da error la funcion kill() retornar 1
+        if (ret == -1) {
+            return 1;
         }
+
+        printf("##############################\n");
         
+        // Espera 1 segundo para que se lancen los 2 siguientes dados
+        sleep(1);
+
+        // Si se llega a la cantidad maxima de intentos, salir
+        if (intentos == MAX_INTENTOS) {
+            break;
+        }
     }
 
     printf ("SIGUSR1 was raised %d times\n", sigusr1_count);
