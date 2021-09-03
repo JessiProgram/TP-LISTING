@@ -46,20 +46,20 @@ int main (int argc, char* argv[])
 		switch (next_option)
 		{
 			case 'h':
-			printf("Entre en h\n");
+			
 			/* -h or --help */
 			/* User has requested usage information. Print it to standard
 			output, and exit with exit code zero (normal termination).*/
 				print_usage (stdout, 0);
 			
 			case 'o':
-				printf("Entre en o %s\n",optarg);
+				
 			/* -o or --output */
 			/* This option takes an argument, the name of the output file. */
 				output_filename = optarg;
 				break;
 			case 'v':
-				printf("Entre en v\n");
+				
 				/* -v or --verbose */
 				verbose = 1;
 				break;
@@ -72,7 +72,7 @@ int main (int argc, char* argv[])
 				print_usage (stderr, 1);
 
 			case -1:
-			printf("no entro\n");
+			printf("Hemos terminado\n");
 				break;
 				/* Done with options.
 				*/
@@ -90,7 +90,7 @@ int main (int argc, char* argv[])
 		for (i = optind; i < argc; ++i)
 			printf ("Argument: %s\n", argv[i]);
 	}
-	printf("holaaaaaaaaaaaaaaa\n");
+	printf("Elija una opcion de argumento -h, -o, o -v\n");
 	/* The main program goes here. */
 	return 0;
 }

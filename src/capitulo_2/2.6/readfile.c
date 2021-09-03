@@ -35,6 +35,7 @@ char* read_from_file (const char* filename, size_t length)
 int main(int argc, char const *argv[])
 {
 	/* code */
+	
 	char * buffer = read_from_file ("texto.txt", 2);
 	printf("%s\n",buffer );
 	free(buffer);

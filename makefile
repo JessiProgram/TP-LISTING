@@ -13,8 +13,32 @@ listing-2.1:
 listing-2.2:
 	mkdir -p bin/capitulo_2; \
 	cd src/capitulo_2/2.2; \
-	gcc $(CFLAGS) -c getopt_long.c; \
-	mv getopt_long.o ../../../bin/capitulo_2/
+	gcc $(CFLAGS) -o getopt_long getopt_long.c; \
+	mv getopt_long ../../../bin/capitulo_2/
+
+listing-2.3:
+	mkdir -p bin/capitulo_2; \
+	cd src/capitulo_2/2.3; \
+	gcc -o print-env print-env.c; \
+	mv print-env ../../../bin/capitulo_2/	
+
+listing-2.4:
+	mkdir -p bin/capitulo_2; \
+	cd src/capitulo_2/2.4; \
+	gcc -o client client.c; \
+	mv client ../../../bin/capitulo_2/	
+
+listing-2.6:
+	mkdir -p bin/capitulo_2; \
+	cd src/capitulo_2/2.6; \
+	gcc -o readfile readfile.c; \
+	mv readfile ../../../bin/capitulo_2/	
+	@echo "No se olvide de mantener el archivo texto.txt en la carpeta bin/capitulo_2"
+
+
+listing-2.8:
+	@echo "Use el listing-2.7 porque van juntos"
+
 
 
 
