@@ -77,3 +77,10 @@ listing-3.5:
 	cd src/capitulo_3/3.5 && \
 	gcc $(CFLAGS) -o sigusr1.o sigusr1.c && \
 	mv sigusr1.o $(LISTING_A_RAIZ)/bin/capitulo_3
+
+listing-3.6: 
+	rm -rf bin/capitulo_3/zombie.o && \
+	mkdir -p bin/capitulo_3 && \
+	cd src/capitulo_3/3.6 && \
+	gcc $(CFLAGS) -o zombie.o zombie.c && \
+	mv zombie.o $(LISTING_A_RAIZ)/bin/capitulo_3
