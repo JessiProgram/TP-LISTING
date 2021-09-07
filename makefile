@@ -84,3 +84,12 @@ listing-3.6:
 	cd src/capitulo_3/3.6 && \
 	gcc $(CFLAGS) -o zombie.o zombie.c && \
 	mv zombie.o $(LISTING_A_RAIZ)/bin/capitulo_3
+
+
+# Capitulo 4
+listing-4.13:
+	rm -rf bin/capitulo_4/spin-condvar.o && \
+	mkdir -p bin/capitulo_4 && \
+	cd src/capitulo_4/4.13 && \
+	cc $(CFLAGS) -o spin-condvar.o spin-condvar.c -lpthread && \
+	mv spin-condvar.o $(LISTING_A_RAIZ)/bin/capitulo_4
