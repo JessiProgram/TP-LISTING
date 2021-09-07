@@ -93,3 +93,10 @@ listing-4.13:
 	cd src/capitulo_4/4.13 && \
 	cc $(CFLAGS) -o spin-condvar.o spin-condvar.c -lpthread && \
 	mv spin-condvar.o $(LISTING_A_RAIZ)/bin/capitulo_4
+
+listing-4.14:
+	rm -rf bin/capitulo_4/condvar.o && \
+	mkdir -p bin/capitulo_4 && \
+	cd src/capitulo_4/4.14 && \
+	cc $(CFLAGS) -o condvar.o condvar.c -lpthread && \
+	mv condvar.o $(LISTING_A_RAIZ)/bin/capitulo_4
