@@ -41,7 +41,13 @@ listing-2.8:
 
 
 listing-2.9:
-	
+	rm -rf bin/capitulo_2/tifftest.o && \
+	rm -rf bin/capitulo_2/playa.tiff && \
+	mkdir -p bin/capitulo_2 && \
+	cd src/capitulo_2/2.9 && \
+	gcc $(CFLAGS) -o tifftest.o tifftest.c -ltiff && \
+	mv tifftest.o $(LISTING_A_RAIZ)/bin/capitulo_2 && \
+	cp ./playa.tiff $(LISTING_A_RAIZ)/bin/capitulo_2
 
 
 # Capitulo 3
