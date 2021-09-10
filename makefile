@@ -1,7 +1,53 @@
+#######################
 # Variables
+#######################
 LISTING_A_RAIZ=../../..
 
 
+
+
+#######################
+# Funciones
+#######################
+cleanCapitulo=rm -rf bin/capitulo_$(1)
+
+
+
+
+#######################
+# Make All
+#######################
+all:
+	make listing-2.9 && \
+	make listing-3.1 && \
+	make listing-3.2 && \
+	make listing-3.3 && \
+	make listing-3.4 && \
+	make listing-3.5 && \
+	make listing-3.6 && \
+	make listing-4.13 && \
+	make listing-4.14 && \
+	make listing-4.15
+
+
+
+
+#######################
+# Make Clean
+#######################
+clean:
+	$(call cleanCapitulo,1) && \
+	$(call cleanCapitulo,2) && \
+	$(call cleanCapitulo,3) && \
+	$(call cleanCapitulo,4) && \
+	$(call cleanCapitulo,5)
+
+
+
+
+#######################
+# Listings
+#######################
 
 # Capitulo 2
 listing-2.1:
