@@ -152,6 +152,13 @@ listing-3.6:
 
 
 # Capitulo 4
+listing-4.1:
+	rm -rf bin/capitulo_4/thread-create.o && \
+	mkdir -p bin/capitulo_4 && \
+	cd src/capitulo_4/4.1 && \
+	cc $(CFLAGS) -o thread-create.o thread-create.c -lpthread && \
+	mv thread-create.o $(LISTING_A_RAIZ)/bin/capitulo_4
+	
 listing-4.13:
 	rm -rf bin/capitulo_4/spin-condvar.o && \
 	mkdir -p bin/capitulo_4 && \
