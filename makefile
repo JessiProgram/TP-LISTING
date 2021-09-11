@@ -161,3 +161,90 @@ listing-4.15:
 	cd src/capitulo_4/4.15 && \
 	cc $(CFLAGS) -o thread-pid.o thread-pid.c -lpthread && \
 	mv thread-pid.o $(LISTING_A_RAIZ)/bin/capitulo_4
+	
+	
+#Capitulo 5
+listing-5.1:
+	rm -rf bin/capitulo_5/smh.o && \
+	mkdir -p bin/capitulo_5 && \
+	cd src/capitulo_5/5.1 && \
+	cc $(CFLAGS) -o shm.o shm.c && \
+	mv shm.o $(LISTING_A_RAIZ)/bin/capitulo_5
+	
+listing-5.2:
+	rm -rf bin/capitulo_5/sem_all_deall.o && \
+	mkdir -p bin/capitulo_5 && \
+	cd src/capitulo_5/5.2 && \
+	cc $(CFLAGS) -o sem_all_deall.o sem_all_deall.c && \
+	mv sem_all_deall.o $(LISTING_A_RAIZ)/bin/capitulo_5
+	
+listing-5.3:
+	rm -rf bin/capitulo_5/sem_init.o && \
+	mkdir -p bin/capitulo_5 && \
+	cd src/capitulo_5/5.3 && \
+	cc $(CFLAGS) -o sem_init.o sem_init.c && \
+	mv sem_init.o $(LISTING_A_RAIZ)/bin/capitulo_5
+	
+listing-5.4:
+	rm -rf bin/capitulo_5/sem_pv.o && \
+	mkdir -p bin/capitulo_5 && \
+	cd src/capitulo_5/5.4 && \
+	cc $(CFLAGS) -o sem_pv.o sem_pv.c && \
+	mv sem_pv.o $(LISTING_A_RAIZ)/bin/capitulo_5
+
+listing-5.5:
+	rm -rf bin/capitulo_5/mmap-write.o && \
+	mkdir -p bin/capitulo_5 && \
+	cd src/capitulo_5/5.5 && \
+	cc $(CFLAGS) -o mmap-write.o mmap-write.c && \
+	mv mmap-write.o $(LISTING_A_RAIZ)/bin/capitulo_5
+	
+listing-5.6:
+	rm -rf bin/capitulo_5/mmap-read.o && \
+	mkdir -p bin/capitulo_5 && \
+	cd src/capitulo_5/5.6 && \
+	cc $(CFLAGS) -o mmap-read.o mmap-read.c && \
+	mv mmap-read.o $(LISTING_A_RAIZ)/bin/capitulo_5
+	
+listing-5.7:
+	rm -rf bin/capitulo_5/pipe.o && \
+	mkdir -p bin/capitulo_5 && \
+	cd src/capitulo_5/5.7 && \
+	cc $(CFLAGS) -o pipe.o pipe.c && \
+	mv pipe.o $(LISTING_A_RAIZ)/bin/capitulo_5
+	
+listing-5.8:
+	rm -rf bin/capitulo_5/dup2.o && \
+	mkdir -p bin/capitulo_5 && \
+	cd src/capitulo_5/5.8 && \
+	cc $(CFLAGS) -o dup2.o dup2.c && \
+	mv dup2.o $(LISTING_A_RAIZ)/bin/capitulo_5
+	
+listing-5.9:
+	rm -rf bin/capitulo_5/popen.o && \
+	mkdir -p bin/capitulo_5 && \
+	cd src/capitulo_5/5.9 && \
+	cc $(CFLAGS) -o popen.o popen.c && \
+	mv popen.o $(LISTING_A_RAIZ)/bin/capitulo_5
+	
+listing-5.10:
+	rm -rf bin/capitulo_5/socket-server.o && \
+	mkdir -p bin/capitulo_5 && \
+	cd src/capitulo_5/5.10 && \
+	cc $(CFLAGS) -o socket-server.o socket-server.c && \
+	mv socket-server.o $(LISTING_A_RAIZ)/bin/capitulo_5
+	
+listing-5.11:
+	rm -rf bin/capitulo_5/socket-cliente.o && \
+	mkdir -p bin/capitulo_5 && \
+	cd src/capitulo_5/5.11 && \
+	cc $(CFLAGS) -o socket-cliente.o socket-cliente.c && \
+	mv socket-cliente.o $(LISTING_A_RAIZ)/bin/capitulo_5
+	
+listing-5.12:
+	rm -rf bin/capitulo_5/socket-inet.o && \
+	mkdir -p bin/capitulo_5 && \
+	cd src/capitulo_5/5.12 && \
+	cc $(CFLAGS) -o socket-inet.o socket-inet.c && \
+	mv socket-inet.o $(LISTING_A_RAIZ)/bin/capitulo_5
+	
