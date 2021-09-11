@@ -27,8 +27,19 @@ all:
 	make listing-3.6 && \
 	make listing-4.13 && \
 	make listing-4.14 && \
-	make listing-4.15
-
+	make listing-4.15 && \
+	make listing-5.1 && \
+	make listing-5.2 && \
+	make listing-5.3 && \
+	make listing-5.4 && \
+	make listing-5.5 && \
+	make listing-5.6 && \
+	make listing-5.7 && \
+	make listing-5.8 && \
+	make listing-5.9 && \
+	make listing-5.10 && \
+	make listing-5.11 && \
+	make listing-5.12
 
 
 
