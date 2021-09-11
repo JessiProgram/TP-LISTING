@@ -29,5 +29,3 @@ int main()
     
     return 0;
 }
-/*Recordar para el makefile:
-Para compilar en linux:  cc -o thread-create thread-create.c -lpthread*/
