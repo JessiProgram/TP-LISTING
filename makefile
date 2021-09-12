@@ -25,6 +25,18 @@ all:
 	make listing-3.4 && \
 	make listing-3.5 && \
 	make listing-3.6 && \
+	make listing-4.1 && \
+	make listing-4.2 && \
+	make listing-4.3 && \
+	make listing-4.4 && \
+	make listing-4.5 && \
+	make listing-4.6 && \
+	make listing-4.7 && \
+	make listing-4.8 && \
+	make listing-4.9 && \
+	make listing-4.10 && \
+	make listing-4.11 && \
+	make listing-4.12 && \
 	make listing-4.13 && \
 	make listing-4.14 && \
 	make listing-4.15 && \
