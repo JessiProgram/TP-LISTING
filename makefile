@@ -162,30 +162,79 @@ listing-4.1:
 listing-4.2:
 	rm -rf bin/capitulo_4/thread-create2.o && \
 	mkdir -p bin/capitulo_4 && \
-	cd src/capitulo_4/4.2 && \ 
+	cd src/capitulo_4/4.2 && \
 	cc $(CFLAGS) -o thread-create2.o thread-create2.c -lpthread && \
 	mv thread-create2.o $(LISTING_A_RAIZ)/bin/capitulo_4
 
 listing-4.3:
 	rm -rf bin/capitulo_4/thread-create2.o && \
 	mkdir -p bin/capitulo_4 && \
-	cd src/capitulo_4/4.3 && \ 
+	cd src/capitulo_4/4.3 && \
 	cc $(CFLAGS) -o thread-create2.o thread-create2.c -lpthread && \
 	mv thread-create2.o $(LISTING_A_RAIZ)/bin/capitulo_4
 
 listing-4.4:
 	rm -rf bin/capitulo_4/primes.o && \
 	mkdir -p bin/capitulo_4 && \
-	cd src/capitulo_4/4.4 && \ 
+	cd src/capitulo_4/4.4 && \
 	cc $(CFLAGS) -o primes.o primes.c -lpthread && \
 	mv primes.o $(LISTING_A_RAIZ)/bin/capitulo_4
 
 listing-4.5:
 	rm -rf bin/capitulo_4/detached.o && \
 	mkdir -p bin/capitulo_4 && \
-	cd src/capitulo_4/4.5 && \ 
+	cd src/capitulo_4/4.5 && \
 	cc $(CFLAGS) -o detached.o detached.c -lpthread && \
 	mv detached.o $(LISTING_A_RAIZ)/bin/capitulo_4
+
+listing-4.6:
+	rm -rf bin/capitulo_4/critical-section.o && \
+	mkdir -p bin/capitulo_4 && \
+	cd src/capitulo_4/4.6 && \
+	cc $(CFLAGS) -o critical-section.o critical-section.c -lpthread && \
+	mv critical-section.o $(LISTING_A_RAIZ)/bin/capitulo_4
+
+listing-4.7:
+	rm -rf bin/capitulo_4/tsd.o && \
+	mkdir -p bin/capitulo_4 && \
+	cd src/capitulo_4/4.7 && \
+	cc $(CFLAGS) -o tsd.o tsd.c -lpthread -lm && \
+	mv tsd.o $(LISTING_A_RAIZ)/bin/capitulo_4
+
+listing-4.8:
+	rm -rf bin/capitulo_4/cleanup.o && \
+	mkdir -p bin/capitulo_4 && \
+	cd src/capitulo_4/4.8 && \
+	cc $(CFLAGS) -o cleanup.o cleanup.c -lpthread && \
+	mv cleanup.o $(LISTING_A_RAIZ)/bin/capitulo_4
+
+listing-4.9:
+	rm -rf bin/capitulo_4/cxx-exit.o && \
+	mkdir -p bin/capitulo_4 && \
+	cd src/capitulo_4/4.9 && \
+	g++ $(CFLAGS) -o cxx-exit.o cxx-exit.cpp -lpthread && \
+	mv cxx-exit.o $(LISTING_A_RAIZ)/bin/capitulo_4
+
+listing-4.10:
+	rm -rf bin/capitulo_4/job-queue1.o && \
+	mkdir -p bin/capitulo_4 && \
+	cd src/capitulo_4/4.10 && \
+	cc $(CFLAGS) -o job-queue1.o job-queue1.c -lpthread && \
+	mv job-queue1.o $(LISTING_A_RAIZ)/bin/capitulo_4
+
+listing-4.11:
+	rm -rf bin/capitulo_4/job-queue2.o && \
+	mkdir -p bin/capitulo_4 && \
+	cd src/capitulo_4/4.11 && \
+	cc $(CFLAGS) -o job-queue2.o job-queue2.c -lpthread && \
+	mv job-queue2.o $(LISTING_A_RAIZ)/bin/capitulo_4
+
+listing-4.12:
+	rm -rf bin/capitulo_4/job-queue3.o && \
+	mkdir -p bin/capitulo_4 && \
+	cd src/capitulo_4/4.12 && \
+	cc $(CFLAGS) -o job-queue3.o job-queue3.c -lpthread && \
+	mv job-queue3.o $(LISTING_A_RAIZ)/bin/capitulo_4
 
 listing-4.13:
 	rm -rf bin/capitulo_4/spin-condvar.o && \
