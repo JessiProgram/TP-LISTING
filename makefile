@@ -179,11 +179,11 @@ listing-4.2:
 	mv thread-create2.o $(LISTING_A_RAIZ)/bin/capitulo_4
 
 listing-4.3:
-	rm -rf bin/capitulo_4/thread-create2.o && \
+	rm -rf bin/capitulo_4/thread-create3.o && \
 	mkdir -p bin/capitulo_4 && \
 	cd src/capitulo_4/4.3 && \
-	cc $(CFLAGS) -o thread-create2.o thread-create2.c -lpthread && \
-	mv thread-create2.o $(LISTING_A_RAIZ)/bin/capitulo_4
+	cc $(CFLAGS) -o thread-create3.o thread-create3.c -lpthread && \
+	mv thread-create3.o $(LISTING_A_RAIZ)/bin/capitulo_4
 
 listing-4.4:
 	rm -rf bin/capitulo_4/primes.o && \
