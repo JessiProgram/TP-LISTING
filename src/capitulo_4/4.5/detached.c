@@ -40,7 +40,7 @@ void* thread_function1 (void* thread_arg)
 /*Imprime en un archivo los primeros N nros. primos.*/
 void* thread_function2(void* args) {
 
-    FILE* archivo = fopen("archivo.txt", "w");
+    FILE* archivo = fopen("archivoListing4_5.txt", "w");
     int n = *((int*) args);
     int i = 1;
     int esPrimo = 1; //0 - False, 1 - True
