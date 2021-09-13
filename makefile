@@ -18,6 +18,14 @@ cleanCapitulo=rm -rf bin/capitulo_$(1)
 # Make All
 #######################
 all:
+	make listing-1.1 && \
+	make listing-2.1 && \
+	make listing-2.2 && \
+	make listing-2.3 && \
+	make listing-2.4 && \
+	make listing-2.5 && \
+	make listing-2.6 && \
+	make listing-2.7 && \
 	make listing-2.9 && \
 	make listing-3.1 && \
 	make listing-3.2 && \
