@@ -23,8 +23,6 @@ int main () {
 	sigaction (SIGCHLD, &sigchld_action, NULL);
 	
 	/* Now do things, including forking a child process.*/
-	sleep(5);
-
 	printf("Creamos un hijo\n");
 	pid_t child_pid;
 	printf ("the main program process ID is %d\n", (int) getpid());

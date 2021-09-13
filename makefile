@@ -33,6 +33,7 @@ all:
 	make listing-3.4 && \
 	make listing-3.5 && \
 	make listing-3.6 && \
+	make listing-3.7 && \
 	make listing-4.1 && \
 	make listing-4.2 && \
 	make listing-4.3 && \
@@ -96,6 +97,9 @@ listing-1.2:
 
 listing-1.3:
 	@echo "Use el listing-1.1 porque van juntos"
+
+
+
 
 # Capitulo 2
 listing-2.1:
@@ -164,6 +168,8 @@ listing-2.9:
 	cp ./playa.tiff $(LISTING_A_RAIZ)/bin/capitulo_2
 
 
+
+
 # Capitulo 3
 listing-3.1: 
 	rm -rf bin/capitulo_3/print-pid.o && \
@@ -207,6 +213,12 @@ listing-3.6:
 	gcc $(CFLAGS) -o zombie.o zombie.c && \
 	mv zombie.o $(LISTING_A_RAIZ)/bin/capitulo_3
 
+listing-3.7: 
+	rm -rf bin/capitulo_3/sigchld.o && \
+	mkdir -p bin/capitulo_3 && \
+	cd src/capitulo_3/3.7 && \
+	gcc $(CFLAGS) -o sigchld.o sigchld.c && \
+	mv sigchld.o $(LISTING_A_RAIZ)/bin/capitulo_3
 
 
 
@@ -317,6 +329,8 @@ listing-4.15:
 	cc $(CFLAGS) -o thread-pid.o thread-pid.c -lpthread && \
 	mv thread-pid.o $(LISTING_A_RAIZ)/bin/capitulo_4
 	
+	
+
 	
 #Capitulo 5
 listing-5.1:
