@@ -25,6 +25,7 @@ all:
 	make listing-3.4 && \
 	make listing-3.5 && \
 	make listing-3.6 && \
+	make listing-3.7 && \
 	make listing-4.1 && \
 	make listing-4.2 && \
 	make listing-4.3 && \
@@ -162,6 +163,12 @@ listing-3.6:
 	gcc $(CFLAGS) -o zombie.o zombie.c && \
 	mv zombie.o $(LISTING_A_RAIZ)/bin/capitulo_3
 
+listing-3.7: 
+	rm -rf bin/capitulo_3/sigchld.o && \
+	mkdir -p bin/capitulo_3 && \
+	cd src/capitulo_3/3.7 && \
+	gcc $(CFLAGS) -o sigchld.o sigchld.c && \
+	mv sigchld.o $(LISTING_A_RAIZ)/bin/capitulo_3
 
 # Capitulo 4
 listing-4.1:
