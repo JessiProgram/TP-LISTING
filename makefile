@@ -90,6 +90,9 @@ listing-1.2:
 listing-1.3:
 	@echo "Use el listing-1.1 porque van juntos"
 
+
+
+
 # Capitulo 2
 listing-2.1:
 	rm -rf bin/capitulo_2/arglist.o && \
@@ -155,6 +158,8 @@ listing-2.9:
 	gcc $(CFLAGS) -o tifftest.o tifftest.c -ltiff && \
 	mv tifftest.o $(LISTING_A_RAIZ)/bin/capitulo_2 && \
 	cp ./playa.tiff $(LISTING_A_RAIZ)/bin/capitulo_2
+
+
 
 
 # Capitulo 3
@@ -316,6 +321,8 @@ listing-4.15:
 	cc $(CFLAGS) -o thread-pid.o thread-pid.c -lpthread && \
 	mv thread-pid.o $(LISTING_A_RAIZ)/bin/capitulo_4
 	
+	
+
 	
 #Capitulo 5
 listing-5.1:
