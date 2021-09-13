@@ -72,42 +72,79 @@ clean:
 # Listings
 #######################
 
+
+# Capitulo 1
+listing-1.1:
+	rm -rf bin/capitulo_1/reciprocal && \
+	mkdir -p bin/capitulo_1; \
+	cd src/capitulo_1; \
+	gcc $(CFLAGS) -c main.c; \
+	g++ $(CFLAGS) -c reciprocal.cpp; \
+	g++ -o reciprocal main.o reciprocal.o; \
+	mv reciprocal ../../bin/capitulo_1/
+
+listing-1.2:
+	@echo "Use el listing-1.1 porque van juntos"
+
+listing-1.3:
+	@echo "Use el listing-1.1 porque van juntos"
+
 # Capitulo 2
 listing-2.1:
+	rm -rf bin/capitulo_2/arglist.o && \
 	mkdir -p bin/capitulo_2; \
 	cd src/capitulo_2/2.1; \
 	gcc $(CFLAGS) -c arglist.c; \
 	mv arglist.o ../../../bin/capitulo_2/
 
 listing-2.2:
+	rm -rf bin/capitulo_2/getopt_long.o && \
 	mkdir -p bin/capitulo_2; \
 	cd src/capitulo_2/2.2; \
-	gcc $(CFLAGS) -o getopt_long getopt_long.c; \
-	mv getopt_long ../../../bin/capitulo_2/
+	gcc $(CFLAGS) -o getopt_long.o getopt_long.c; \
+	mv getopt_long.o ../../../bin/capitulo_2/
 
 listing-2.3:
+	rm -rf bin/capitulo_2/print-env.o && \
 	mkdir -p bin/capitulo_2; \
 	cd src/capitulo_2/2.3; \
-	gcc -o print-env print-env.c; \
-	mv print-env ../../../bin/capitulo_2/	
+	gcc -o print-env.o print-env.c; \
+	mv print-env.o ../../../bin/capitulo_2/	
 
 listing-2.4:
+	rm -rf bin/capitulo_2/client.o && \
 	mkdir -p bin/capitulo_2; \
 	cd src/capitulo_2/2.4; \
-	gcc -o client client.c; \
-	mv client ../../../bin/capitulo_2/	
+	gcc -o client.o client.c; \
+	mv client.o ../../../bin/capitulo_2/	
+
+listing-2.5:
+	rm -rf bin/capitulo_2/temp_file.o && \
+	mkdir -p bin/capitulo_2 && \
+	cd src/capitulo_2/2.5 && \
+	gcc $(CFLAGS) -o temp_file.o temp_file.c && \
+	mv temp_file.o $(LISTING_A_RAIZ)/bin/capitulo_2 && \
 
 listing-2.6:
+	rm -rf bin/capitulo_2/readfile.o && \
 	mkdir -p bin/capitulo_2; \
 	cd src/capitulo_2/2.6; \
-	gcc -o readfile readfile.c; \
-	mv readfile ../../../bin/capitulo_2/	
+	gcc -o readfile.o readfile.c; \
+	mv readfile.o ../../../bin/capitulo_2/	
 	@echo "No se olvide de mantener el archivo texto.txt en la carpeta bin/capitulo_2"
 
-
+listing-2.7:
+	rm -rf bin/capitulo_2/app; \
+	mkdir -p bin/capitulo_2; \
+	cd src/capitulo_2/2.7;\
+	gcc -c test.c; \
+	gcc -c app.c;\
+	ar cr libtest.a test.o; \
+	gcc -o app app.o -L. -ltest; \
+	mv app ../../../bin/capitulo_2/	
+	
 listing-2.8:
 	@echo "Use el listing-2.7 porque van juntos"
-
 
 listing-2.9:
 	rm -rf bin/capitulo_2/tifftest.o && \
@@ -161,6 +198,9 @@ listing-3.6:
 	cd src/capitulo_3/3.6 && \
 	gcc $(CFLAGS) -o zombie.o zombie.c && \
 	mv zombie.o $(LISTING_A_RAIZ)/bin/capitulo_3
+
+
+
 
 
 # Capitulo 4
