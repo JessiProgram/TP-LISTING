@@ -135,7 +135,7 @@ listing-2.5:
 	mkdir -p bin/capitulo_2 && \
 	cd src/capitulo_2/2.5 && \
 	gcc $(CFLAGS) -o temp_file.o temp_file.c && \
-	mv temp_file.o $(LISTING_A_RAIZ)/bin/capitulo_2 && \
+	mv temp_file.o $(LISTING_A_RAIZ)/bin/capitulo_2
 
 listing-2.6:
 	rm -rf bin/capitulo_2/readfile.o && \
