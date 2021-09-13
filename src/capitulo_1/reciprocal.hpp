@@ -3,7 +3,7 @@
 extern "C"{
 #endif
 
-	extern double reciproco(int i);
+	extern double reciprocal(int i);
 
 #ifdef __cplusplus
 }

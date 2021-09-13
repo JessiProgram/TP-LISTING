@@ -1,7 +1,7 @@
 #include <cassert>
-#include "reciproco.hpp"
+#include "reciprocal.hpp"
 
-double reciproco(int i){
+double reciprocal(int i){
 	//no debe ser cero
 	assert(i != 0);
 	return 1.0 / i;
